@@ -5,6 +5,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{88CC50AD-3DE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostDoc.ConsoleApp", "src\HostDoc.ConsoleApp\HostDoc.ConsoleApp.csproj", "{6BCBFEA7-8559-41FD-8554-2F04BEBD8654}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostDoc.Core", "src\HostDoc.Core\HostDoc.Core.csproj", "{3A19A751-CB55-4C91-9929-C4B67BF11A1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +29,21 @@ Global
 		{6BCBFEA7-8559-41FD-8554-2F04BEBD8654}.Release|x64.Build.0 = Release|x64
 		{6BCBFEA7-8559-41FD-8554-2F04BEBD8654}.Release|x86.ActiveCfg = Release|x86
 		{6BCBFEA7-8559-41FD-8554-2F04BEBD8654}.Release|x86.Build.0 = Release|x86
+		{3A19A751-CB55-4C91-9929-C4B67BF11A1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A19A751-CB55-4C91-9929-C4B67BF11A1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A19A751-CB55-4C91-9929-C4B67BF11A1B}.Debug|x64.ActiveCfg = Debug|x64
+		{3A19A751-CB55-4C91-9929-C4B67BF11A1B}.Debug|x64.Build.0 = Debug|x64
+		{3A19A751-CB55-4C91-9929-C4B67BF11A1B}.Debug|x86.ActiveCfg = Debug|x86
+		{3A19A751-CB55-4C91-9929-C4B67BF11A1B}.Debug|x86.Build.0 = Debug|x86
+		{3A19A751-CB55-4C91-9929-C4B67BF11A1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A19A751-CB55-4C91-9929-C4B67BF11A1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A19A751-CB55-4C91-9929-C4B67BF11A1B}.Release|x64.ActiveCfg = Release|x64
+		{3A19A751-CB55-4C91-9929-C4B67BF11A1B}.Release|x64.Build.0 = Release|x64
+		{3A19A751-CB55-4C91-9929-C4B67BF11A1B}.Release|x86.ActiveCfg = Release|x86
+		{3A19A751-CB55-4C91-9929-C4B67BF11A1B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6BCBFEA7-8559-41FD-8554-2F04BEBD8654} = {88CC50AD-3DE7-4B9D-B60C-BF569242A494}
+		{3A19A751-CB55-4C91-9929-C4B67BF11A1B} = {88CC50AD-3DE7-4B9D-B60C-BF569242A494}
 	EndGlobalSection
 EndGlobal
