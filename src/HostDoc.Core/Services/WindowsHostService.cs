@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
+using HostDoc.Core.Extensions;
 using HostDoc.Core.Models;
 using HostDoc.Core.Types;
 
@@ -22,25 +23,13 @@ namespace HostDoc.Core.Services
                 while ((line = sr.ReadLine()) != null)
                 {
                     // Check if line is relevant
-                    var regex = new Regex(@"\s+");
-                    line = regex.Replace(line, " ");
-                    line = line.Trim();
+                    line = line.TrimAll();
                     if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
                         continue;
                     
                     // Extract the entries
                     string[] lineParts = line.Split(' ');
-                    string other = null;
-                    if (lineParts.Length > 2)
-                    {
-                        string[] otherParts = new string[lineParts.Length - 2];
-                        for (int i = 2; i < lineParts.Length; i++)
-                        {
-                            otherParts[i - 2] = lineParts[i];
-                        }
-
-                        other = string.Join(" ", otherParts);
-                    }
+                    string other = lineParts.JoinFrom(2, " ");
                     
                     var hostEntry = new HostEntry(lineParts[0], lineParts[1], other);
                     hostEntries.Add(hostEntry);
