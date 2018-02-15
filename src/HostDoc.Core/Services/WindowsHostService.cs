@@ -10,13 +10,18 @@ namespace HostDoc.Core.Services
 {
     public class WindowsHostService : IHostService
     {
-        const string hostLocation = @"C:\Windows\System32\drivers\etc\hosts";
-        
+        const string HostLocation = @"C:\Windows\System32\drivers\etc\hosts";
+
+        public string GetHostFileLocation()
+        {
+            return HostLocation;
+        }
+
         public List<HostEntry> ReadHostEntries()
         {
             List<HostEntry> hostEntries = new List<HostEntry>();
             
-            using (StreamReader sr = new StreamReader(hostLocation))
+            using (StreamReader sr = new StreamReader(HostLocation))
             {
                 string line;
 
