@@ -11,5 +11,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HostDoc.Core\HostDoc.Core.csproj" />
+    <ProjectReference Include="..\HostDoc.Persistence\HostDoc.Persistence.csproj" />
   </ItemGroup>
 </Project>
