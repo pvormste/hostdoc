@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace HostDoc.Core.Models
+namespace HostDoc.Core.Definitions
 {
     public class HostEntry
     {

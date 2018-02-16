@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
+using HostDoc.Core.Definitions;
 using HostDoc.Core.Extensions;
-using HostDoc.Core.Models;
 using HostDoc.Core.Types;
 
 namespace HostDoc.Core.Services
@@ -44,7 +44,7 @@ namespace HostDoc.Core.Services
             return hostEntries;
         }
 
-        public List<HostEntry> FilterHostEntries(FilterType type, string filterValue, List<HostEntry> hostEntries = null)
+        public List<HostEntry> FilterHostEntries(EntryType type, string filterValue, List<HostEntry> hostEntries = null)
         {
             throw new NotImplementedException();
         }
@@ -55,6 +55,11 @@ namespace HostDoc.Core.Services
         }
 
         public bool AddMultipleHostEntries(List<HostEntry> hostEntries)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ReplaceHostEntry(EntryType type, string oldValue, string newValue)
         {
             throw new NotImplementedException();
         }

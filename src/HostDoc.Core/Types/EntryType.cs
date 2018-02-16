@@ -1,6 +1,6 @@
 ﻿namespace HostDoc.Core.Types
 {
-    public enum FilterType
+    public enum EntryType
     {
         IpAdress,
         Hostname
