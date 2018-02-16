@@ -8,4 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HostDoc.Core\HostDoc.Core.csproj" />
+  </ItemGroup>
 </Project>
