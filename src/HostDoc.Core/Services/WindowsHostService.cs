@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.RegularExpressions;
 using HostDoc.Core.Definitions;
 using HostDoc.Core.Extensions;
 using HostDoc.Core.Types;
@@ -10,35 +9,53 @@ namespace HostDoc.Core.Services
 {
     public class WindowsHostService : IHostService
     {
-        const string HostLocation = @"C:\Windows\System32\drivers\etc\hosts";
+        string hostLocation = null;
 
         public string GetHostFileLocation()
         {
-            return HostLocation;
+            if (!(hostLocation is null)) 
+                return hostLocation;
+            
+            var windir = Environment.GetEnvironmentVariable("windir");
+            hostLocation = windir + @"\System32\drivers\etc\hosts";
+            return hostLocation;
         }
 
         public List<HostEntry> ReadHostEntries()
         {
             List<HostEntry> hostEntries = new List<HostEntry>();
-            
-            using (StreamReader sr = new StreamReader(HostLocation))
-            {
-                string line;
 
-                while ((line = sr.ReadLine()) != null)
+            try
+            {
+                using (StreamReader sr = new StreamReader(GetHostFileLocation()))
                 {
-                    // Check if line is relevant
-                    line = line.TrimAll();
-                    if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
-                        continue;
+                    string line;
+
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        // Check if line is relevant
+                        line = line.TrimAll();
+                        if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
+                            continue;
                     
-                    // Extract the entries
-                    string[] lineParts = line.Split(' ');
-                    string other = lineParts.JoinFrom(2, " ");
+                        // Extract the entries
+                        string[] lineParts = line.Split(' ');
+                        string other = lineParts.JoinFrom(2, " ");
                     
-                    var hostEntry = new HostEntry(lineParts[0], lineParts[1], other);
-                    hostEntries.Add(hostEntry);
+                        var hostEntry = new HostEntry(lineParts[0], lineParts[1], other);
+                        hostEntries.Add(hostEntry);
+                    }
                 }
+            }
+            catch (Exception exception)
+            {
+                // TODO: Handle Stack Trace writing
+                if (exception is DirectoryNotFoundException directoryNotFoundException)
+                    Console.Error.WriteLine($"Path could not be found. ({hostLocation})");
+                else 
+                    Console.Error.WriteLine(exception.Message);
+                
+                Console.Error.Write(exception.StackTrace);
             }
 
             return hostEntries;
