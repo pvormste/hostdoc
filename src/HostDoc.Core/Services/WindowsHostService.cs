@@ -49,13 +49,15 @@ namespace HostDoc.Core.Services
             }
             catch (Exception exception)
             {
-                // TODO: Handle Stack Trace writing
                 if (exception is DirectoryNotFoundException directoryNotFoundException)
-                    Console.Error.WriteLine($"Path could not be found. ({hostLocation})");
+                    Console.Error.WriteLine($"Error: host file could not be found. ({hostLocation})");
                 else 
                     Console.Error.WriteLine(exception.Message);
                 
-                Console.Error.Write(exception.StackTrace);
+                // Print Stack Trace if Debug Build
+                #if DEBUG
+                    Console.Error.Write(exception.StackTrace);
+                #endif
             }
 
             return hostEntries;
