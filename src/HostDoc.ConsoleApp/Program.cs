@@ -6,6 +6,7 @@ namespace HostDoc.ConsoleApp
 {
     [Command(ThrowOnUnexpectedArgument = false), HelpOption]
     [Subcommand("ls", typeof(ListCommand))]
+    [Subcommand("add", typeof(AddCommand))]
     class Program
     {
         public static int Main(string[] args)
