@@ -12,5 +12,6 @@ namespace HostDoc.Core.Services
         bool AddHostEntry(HostEntry hostEntry);
         bool AddMultipleHostEntries(List<HostEntry> hostEntries);
         bool ReplaceHostEntry(EntryType type, string oldValue, string newValue);
+        bool RemoveHostEntry(HostEntry entry);
     }
 }

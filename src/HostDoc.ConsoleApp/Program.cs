@@ -7,6 +7,8 @@ namespace HostDoc.ConsoleApp
     [Command(ThrowOnUnexpectedArgument = false), HelpOption]
     [Subcommand("ls", typeof(ListCommand))]
     [Subcommand("add", typeof(AddCommand))]
+    [Subcommand("replace", typeof(ReplaceCommand))]
+    [Subcommand("rm", typeof(RemoveCommand))]
     class Program
     {
         public static int Main(string[] args)

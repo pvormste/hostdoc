@@ -1,14 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography;
+﻿using System.ComponentModel.DataAnnotations;
 using HostDoc.Core;
 using HostDoc.Core.Definitions;
-using HostDoc.Core.Services;
 using McMaster.Extensions.CommandLineUtils;
 
 namespace HostDoc.ConsoleApp.Commands
 {
-    [Command(Description = "Add a new entry to hostfile"), HelpOption]
+    [Command(Description = "Add a new entry to host file"), HelpOption]
     public class AddCommand
     {
         [Option(Description = "IP Address of the new entry", ShortName = "i", LongName = "ip")]

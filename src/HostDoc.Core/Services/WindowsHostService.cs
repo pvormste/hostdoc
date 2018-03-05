@@ -82,5 +82,10 @@ namespace HostDoc.Core.Services
         {
             throw new NotImplementedException();
         }
+
+        public bool RemoveHostEntry(HostEntry entry)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
