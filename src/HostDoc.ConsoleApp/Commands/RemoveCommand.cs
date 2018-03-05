@@ -5,10 +5,10 @@ namespace HostDoc.ConsoleApp.Commands
     [Command(Description = "Remove an entry in the host file"), HelpOption]
     public class RemoveCommand
     {
-        [Option(Description = "IP Address of the entry to be removed (optional)", LongName = "ip")]
+        [Option(Description = "IP Address of the entry to be removed (optional, if hostname given)", LongName = "ip")]
         public string IpAddress { get; set; }
 
-        [Option(Description = "Hostname of the entry to be removed (optional)", ShortName = "host")]
+        [Option(Description = "Hostname of the entry to be removed (optional, if ip given)", ShortName = "host")]
         public string Hostname { get; set; }
 
         [Option("--all", Description = "Remove all occurences (optional)")]

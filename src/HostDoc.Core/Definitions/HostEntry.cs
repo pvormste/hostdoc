@@ -18,5 +18,18 @@ namespace HostDoc.Core.Definitions
             Hostname = hostname;
             Other = other;
         }
+
+        public override string ToString()
+        {
+            return $"{IpAddress}\t\t{Hostname}\t\t{OtherToString()}";
+        }
+
+        string OtherToString()
+        {
+            if (string.IsNullOrWhiteSpace(Other))
+                return "";
+            
+            return Other.StartsWith("#") ? $"{Other}" : $"# {Other}";
+        }
     }
 }
