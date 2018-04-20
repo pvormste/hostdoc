@@ -1,4 +1,5 @@
-﻿using HostDoc.Core;
+﻿using ConsoleTables;
+using HostDoc.Core;
 using McMaster.Extensions.CommandLineUtils;
 
 namespace HostDoc.ConsoleApp.Commands
@@ -9,9 +10,8 @@ namespace HostDoc.ConsoleApp.Commands
         public void OnExecute(CommandLineApplication app, IConsole console)
         {
             var hostService = Utils.GetHostService();
-            
-            console.WriteLine("List Command!");
-            hostService.ReadHostEntries();
+            var hostEntries = hostService.ReadHostEntries();
+            ConsoleTable.From(hostEntries).Write(Format.Alternative);
         }
     }
 }

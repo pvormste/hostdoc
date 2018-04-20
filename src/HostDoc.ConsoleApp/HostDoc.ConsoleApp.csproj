@@ -11,6 +11,7 @@
     <ProjectReference Include="..\HostDoc.Persistence\HostDoc.Persistence.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="ConsoleTables" Version="2.2.0" />
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.1.1" />
   </ItemGroup>
 </Project>
