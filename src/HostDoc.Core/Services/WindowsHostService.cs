@@ -17,7 +17,7 @@ namespace HostDoc.Core.Services
                 return hostLocation;
             
             var windir = Environment.GetEnvironmentVariable("windir");
-            hostLocation = windir + @"\System32\drivers\etc\hosts";
+            hostLocation = Environment.GetEnvironmentVariable("HOSTFILE_LOCATION") ?? windir + @"\System32\drivers\etc\hosts";
             return hostLocation;
         }
 
