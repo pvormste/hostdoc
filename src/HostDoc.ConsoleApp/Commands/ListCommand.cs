@@ -11,7 +11,7 @@ namespace HostDoc.ConsoleApp.Commands
         {
             var hostService = Utils.GetHostService();
             var hostEntries = hostService.ReadHostEntries();
-            ConsoleTable.From(hostEntries).Write(Format.Alternative);
+            ConsoleTable.From(hostEntries).Write(Format.MarkDown);
         }
     }
 }

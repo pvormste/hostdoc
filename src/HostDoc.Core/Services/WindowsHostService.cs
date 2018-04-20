@@ -4,6 +4,7 @@ using System.IO;
 using HostDoc.Core.Definitions;
 using HostDoc.Core.Extensions;
 using HostDoc.Core.Types;
+using Microsoft.Win32;
 
 namespace HostDoc.Core.Services
 {
@@ -13,11 +14,25 @@ namespace HostDoc.Core.Services
 
         public string GetHostFileLocation()
         {
-            if (!(hostLocation is null)) 
+            if (hostLocation != null) 
                 return hostLocation;
             
+            // Lookup env
+            hostLocation = Environment.GetEnvironmentVariable("HOSTFILE_LOCATION");
+            if (hostLocation != null)
+                return hostLocation;
+            
+            // Lookup registry
+            hostLocation = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters", "DataBasePath", null) as string;
+            if (hostLocation != null)
+            {
+                hostLocation = $"{hostLocation}\\hosts";
+                return hostLocation;
+            }
+            
+            // ... old school!
             var windir = Environment.GetEnvironmentVariable("windir");
-            hostLocation = Environment.GetEnvironmentVariable("HOSTFILE_LOCATION") ?? windir + @"\System32\drivers\etc\hosts";
+            hostLocation = windir + @"\System32\drivers\etc\hosts";
             return hostLocation;
         }
 
