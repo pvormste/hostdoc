@@ -6,9 +6,9 @@ namespace HostDoc.Core
 {
     public static class Utils
     {
-        public static IHostService GetHostService()
+        public static AbstractHostService GetHostService()
         {
-            IHostService hostService = null;
+            AbstractHostService hostService = null;
             
             // Get Host Service for this OS
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
