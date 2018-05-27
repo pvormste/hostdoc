@@ -36,7 +36,7 @@ namespace HostDoc.Core.Services
             return hostLocation;
         }
 
-        public List<HostEntry> ReadHostEntries()
+        public List<HostEntry> ReadHostEntries(string ipFilter = null, string hostnameFilter = null)
         {
             List<HostEntry> hostEntries = new List<HostEntry>();
 
@@ -56,9 +56,20 @@ namespace HostDoc.Core.Services
                         // Extract the entries
                         string[] lineParts = line.Split(' ');
                         string other = lineParts.JoinFrom(2, " ");
-                    
-                        var hostEntry = new HostEntry(lineParts[0], lineParts[1], other);
-                        hostEntries.Add(hostEntry);
+                        
+                        // Check for filter
+                        var isIpFilterSet = ipFilter != null;
+                        var isHostNameFilterSet = hostnameFilter != null;
+
+                        
+                        if ((ipFilter == null && hostnameFilter == null) ||
+                            (isIpFilterSet && ipFilter.Equals(lineParts[0])) ||
+                            (isHostNameFilterSet && hostnameFilter.Equals(lineParts[1])))
+                        {
+                            var hostEntry = new HostEntry(lineParts[0], lineParts[1], other);
+                            hostEntries.Add(hostEntry);
+                        }  
+                        
                     }
                 }
             }
@@ -80,7 +91,21 @@ namespace HostDoc.Core.Services
 
         public List<HostEntry> FilterHostEntries(EntryType type, string filterValue, List<HostEntry> hostEntries = null)
         {
-            throw new NotImplementedException();
+            List<HostEntry> entries;
+            
+            switch (type)
+            {
+                case EntryType.IpAdress:
+                    entries = ReadHostEntries(filterValue);
+                    break;
+                case EntryType.Hostname:
+                    entries = ReadHostEntries(null, filterValue);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+
+            return entries;
         }
 
         public bool AddHostEntry(HostEntry hostEntry)

@@ -7,7 +7,7 @@ namespace HostDoc.Core.Services
     public interface IHostService
     {
         string GetHostFileLocation();
-        List<HostEntry> ReadHostEntries();
+        List<HostEntry> ReadHostEntries(string ipFilter = null, string hostnameFilter = null);
         List<HostEntry> FilterHostEntries(EntryType type, string filterValue, List<HostEntry> hostEntries = null);
         bool AddHostEntry(HostEntry hostEntry);
         bool AddMultipleHostEntries(List<HostEntry> hostEntries);
