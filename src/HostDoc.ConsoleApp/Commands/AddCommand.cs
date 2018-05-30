@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using HostDoc.Core;
 using HostDoc.Core.Definitions;
 using McMaster.Extensions.CommandLineUtils;
@@ -25,7 +26,16 @@ namespace HostDoc.ConsoleApp.Commands
           
             var newEntry = new HostEntry(IpAddress, Hostname, Comment);
             var hostService = Utils.GetHostService();
-            hostService.AddHostEntry(newEntry);
+            var success = hostService.AddHostEntry(newEntry);
+
+            if (!success)
+            {
+                Console.WriteLine("The new host entry was NOT added to host file.");
+            }
+            else
+            {
+                Console.WriteLine("The new host entry was SUCCESSFULLY added!");
+            }
         }
     }
 }
