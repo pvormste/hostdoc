@@ -10,10 +10,10 @@ namespace HostDoc.ConsoleApp.Commands
     [Command(Description = "List all entries in the host file"), HelpOption]
     public class ListCommand
     {
-        [Option(Description = "Filter by ip", ShortName = "i", LongName = "ip")]
+        [Option(Description = "Filter by ip (optional)", ShortName = "i", LongName = "ip")]
         public string IpAddress { get; set; }
         
-        [Option(Description = "Filter by hostname", ShortName = "host", LongName = "hostname")]
+        [Option(Description = "Filter by hostname (optional)", ShortName = "host", LongName = "hostname")]
         public string Hostname { get; set; }
         
         public void OnExecute(CommandLineApplication app, IConsole console)

@@ -8,7 +8,7 @@ namespace HostDoc.ConsoleApp.Commands
     [Command(Description = "Add a new entry to host file"), HelpOption]
     public class AddCommand
     {
-        [Option(Description = "IP Address of the new entry (optional, will use 127.0.0.1 if not given)", ShortName = "i", LongName = "ip")]
+        [Option(Description = "IP Address of the new entry (optional, default: 127.0.0.1)", ShortName = "i", LongName = "ip")]
         public string IpAddress { get; set; }
         
         [Option(Description = "Hostname of the new entry", ShortName = "host")]
