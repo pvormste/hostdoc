@@ -10,8 +10,8 @@ namespace HostDoc.Core.Services
             if (!(HostLocation is null)) 
                 return HostLocation;
 
-            var macdir = Environment.GetEnvironmentVariable("");
-            return macdir;
+            HostLocation = "/etc/hosts";
+            return HostLocation;
         }
         
     }
