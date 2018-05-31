@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 
 namespace HostDoc.Core.Services
 {
@@ -8,9 +8,10 @@ namespace HostDoc.Core.Services
         public override string GetHostFileLocation()
         {
             if (!(HostLocation is null))
-                return HostLocation;
+                return base.HostLocation;
 
-            HostLocation = "/etc/hosts";
+            var windir = Environment.GetEnvironmentVariable("windir");
+            HostLocation = windir + @"\System32\drivers\etc\hosts";
             return HostLocation;
         }
         
